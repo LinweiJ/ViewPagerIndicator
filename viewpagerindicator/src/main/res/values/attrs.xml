@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<declare-styleable name="ViewPagerIndicator">
+		<attr name="selected_color" format="color|reference"/>
+		<attr name="default_color" format="color|reference"/>
+		<attr name="radius" format="dimension|reference"/>
+		<attr name="length" format="dimension|reference"/>
+		<attr name="distance" format="dimension|reference"/>
+		<attr name="num" format="integer"/>
+		<attr name="indicatorType">
+			<enum name="LINE" value="0" />
+			<enum name="CIRCLE" value="1" />
+			<enum name="CIRCLE_LINE" value="2" />
+			<enum name="BEZIER" value="3" />
+			<enum name="SPRING" value="4" />
+		</attr>
+		<attr name="distanceType">
+			<enum name="BY_RADIUS" value="0" />
+			<enum name="BY_DISTANCE" value="1" />
+			<enum name="BY_LAYOUT" value="2" />
+		</attr>
+	</declare-styleable>
+
+</resources>
