@@ -316,8 +316,6 @@ public class ViewPagerIndicator extends View {
         float mc = M;
         mControlPoint[2].y = mRadius;//底部
         mControlPoint[8].y = -mRadius;//顶部
-        mControlPoint[5].x = mCenterPoint.x + mRadius;//右半圆
-        mControlPoint[0].x = mCenterPoint.x - mRadius;//左半圆
 
         //圆心位置
         if (mPosition == mNum - 1 && !mIsLeft) {//第一个 右滑  0-->4
@@ -332,9 +330,7 @@ public class ViewPagerIndicator extends View {
                 mCenterPoint.x = -(mNum - 1) * 0.5f * mDistance;
             }
             //控制点位置
-            if (mPercent >= 1) {//圆
-
-            } else if (mPercent > 0.8 && mPercent <= 1) {//右凸起 圆心不变
+            if (mPercent > 0.8 && mPercent <= 1) {//右凸起 圆心不变
                 mControlPoint[5].x = mCenterPoint.x + mRadius * (2 - (mPercent - 0.8f) / 0.2f);//右半圆
                 mControlPoint[0].x = mCenterPoint.x - mRadius;//左半圆
             } else if (mPercent > 0.5 && mPercent <= 0.8) {//加速 左凸起 扁平化M 最右端固定不变  圆心移动
@@ -352,11 +348,9 @@ public class ViewPagerIndicator extends View {
             } else if (mPercent > 0.1 && mPercent <= 0.2) {//左凹 圆心到达.0
                 mControlPoint[5].x = mCenterPoint.x + mRadius;//右半圆
                 mControlPoint[0].x = mCenterPoint.x - mRadius * (1 - (0.2f - mPercent) / 0.1f * 0.5f);//左半圆
-            } else if (mPercent > 0 && mPercent <= 0.1) {//回弹 圆心到达
+            } else if (mPercent >= 0 && mPercent <= 0.1) {//回弹 圆心到达
                 mControlPoint[5].x = mCenterPoint.x + mRadius;//右半圆
                 mControlPoint[0].x = mCenterPoint.x - mRadius * (1 - (mPercent) / 0.1f * 0.5f);//左半圆
-            } else if (mPercent == 0) {//圆
-
             }
 
         } else if (mPosition == mNum - 1 && mIsLeft) {//最后一个 左滑  4-->0
@@ -372,7 +366,7 @@ public class ViewPagerIndicator extends View {
 
             if (mPercent <= 0) {//圆
 
-            } else if (mPercent <= 0.2 && mPercent > 0) {//左凸起 圆心不变
+            } else if (mPercent <= 0.2 && mPercent >= 0) {//左凸起 圆心不变
                 mControlPoint[5].x = mCenterPoint.x + mRadius;//右半圆
                 mControlPoint[0].x = mCenterPoint.x - mRadius * (1 + (mPercent) / 0.2f);//左半圆
             } else if (mPercent > 0.2 && mPercent <= 0.5) {//加速 右凸起 扁平化M 最左端固定不变  圆心移动
@@ -393,9 +387,9 @@ public class ViewPagerIndicator extends View {
             } else if (mPercent > 0.9 && mPercent <= 1) {//回弹 圆心到达
                 mControlPoint[5].x = mCenterPoint.x + mRadius * (1 - (mPercent - 0.9f) / 0.1f * 0.5f);//右半圆
                 mControlPoint[0].x = mCenterPoint.x - mRadius;//左半圆
-            } else if (mPercent == 1) {//圆
-
             }
+
+
         } else {
             if (mPercent <= 0.2) {//圆
                 mCenterPoint.x = -(mNum - 1) * 0.5f * mDistance + mPosition * mDistance;
@@ -410,9 +404,7 @@ public class ViewPagerIndicator extends View {
             //控制点位置
             if (mIsLeft)//左滑
             {
-                if (mPercent <= 0) {//圆
-
-                } else if (mPercent > 0 && mPercent <= 0.2) {//右凸起 圆心不变
+                if (mPercent >= 0 && mPercent <= 0.2) {//右凸起 圆心不变
                     mControlPoint[5].x = mCenterPoint.x + mRadius * (2 - (0.2f - mPercent) / 0.2f);//右半圆
                     mControlPoint[0].x = mCenterPoint.x - mRadius;//左半圆
                 } else if (mPercent > 0.2 && mPercent <= 0.5) {//加速 左凸起 扁平化M 最右端固定不变  圆心移动
@@ -427,20 +419,16 @@ public class ViewPagerIndicator extends View {
                     mControlPoint[2].y = mRadius * (1 + (mPercent - 0.8f) / 0.3f * 0.1f);//底部
                     mControlPoint[8].y = -mRadius * (1 + (mPercent - 0.8f) / 0.3f * 0.1f);//顶部
                     mc = mc * (1 + (-mPercent + 0.8f) / 0.3f * 0.3f);
-                } else if (mPercent > 0.8 && mPercent < 0.9) {//左凹 圆心到达
+                } else if (mPercent > 0.8 && mPercent <= 0.9) {//左凹 圆心到达
                     mControlPoint[5].x = mCenterPoint.x + mRadius;//右半圆
                     mControlPoint[0].x = mCenterPoint.x - mRadius * (1 - (mPercent - 0.8f) / 0.1f * 0.5f);//左半圆
-                } else if (mPercent > 0.9 && mPercent < 1) {//回弹 圆心到达
+                } else if (mPercent > 0.9 && mPercent <= 1) {//回弹 圆心到达
                     mControlPoint[5].x = mCenterPoint.x + mRadius;//右半圆
                     mControlPoint[0].x = mCenterPoint.x - mRadius * (1 - (1.0f - mPercent) / 0.1f * 0.5f);//左半圆
-                } else if (mPercent == 1) {//圆
-
                 }
-            } else//左滑
+            } else//右滑
             {
-                if (mPercent >= 1) {//圆
-
-                } else if (mPercent < 1 && mPercent >= 0.8) {//左凸起 圆心不变
+                if (mPercent <= 1 && mPercent >= 0.8) {//左凸起 圆心不变
                     mControlPoint[5].x = mCenterPoint.x + mRadius;//右半圆
                     mControlPoint[0].x = mCenterPoint.x - mRadius * (2 - (mPercent - 0.8f) / 0.2f);//左半圆
                 } else if (mPercent > 0.5 && mPercent <= 0.8) {//加速 右凸起 扁平化M 最左端固定不变  圆心移动
@@ -458,12 +446,11 @@ public class ViewPagerIndicator extends View {
                 } else if (mPercent > 0.1 && mPercent <= 0.2) {//右凹 圆心到达
                     mControlPoint[5].x = mCenterPoint.x + mRadius * (1 - (0.2f - mPercent) / 0.1f * 0.5f);//右半圆
                     mControlPoint[0].x = mCenterPoint.x - mRadius;//左半圆
-                } else if (mPercent > 0 && mPercent <= 0.1) {//回弹 圆心到达
+                } else if (mPercent >= 0 && mPercent <= 0.1) {//回弹 圆心到达
                     mControlPoint[5].x = mCenterPoint.x + mRadius * (1 - (mPercent) / 0.1f * 0.5f);//右半圆
                     mControlPoint[0].x = mCenterPoint.x - mRadius;//左半圆
-                } else if (mPercent == 0) {//圆
-
                 }
+
             }
         }
 

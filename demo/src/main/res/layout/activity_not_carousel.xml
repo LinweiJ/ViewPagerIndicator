@@ -103,7 +103,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="弹性粘性球(spring)"/>
+                android:text="弹簧粘性球(spring)"/>
             <com.lwj.widget.viewpagerindicator.ViewPagerIndicator
                 android:id="@+id/indicator_spring"
                 android:layout_width="match_parent"
