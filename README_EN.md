@@ -28,7 +28,7 @@ Add  the dependency  in your module build.gradle :
 
 ```
 dependencies {
-	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.0.1'
+	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.0.2'
 	}
 ```
 

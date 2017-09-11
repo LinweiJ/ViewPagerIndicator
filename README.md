@@ -36,7 +36,7 @@ dependencies {
 
 ## 使用
 
-1. 将ViewPagerIndicator 添加到xml
+1 . 将ViewPagerIndicator 添加到xml
 
 ```
 <com.lwj.widget.viewpagerindicator.ViewPagerIndicator
@@ -70,7 +70,7 @@ Properties:
 
 ​       BY_RADIUS：3倍radius ; BY_DISTANCE ：定义固定距离 ;BY_LAYOUT ：根据layout_width均分得到距离
 
-1. java 
+2 .  java 
 
 ```java
   mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.viewPagerIndicator);
