@@ -2,20 +2,20 @@
 <resources>
 
 	<declare-styleable name="ViewPagerIndicator">
-		<attr name="selected_color" format="color|reference"/>
-		<attr name="default_color" format="color|reference"/>
-		<attr name="radius" format="dimension|reference"/>
-		<attr name="length" format="dimension|reference"/>
-		<attr name="distance" format="dimension|reference"/>
-		<attr name="num" format="integer"/>
-		<attr name="indicatorType">
+		<attr name="vpi_selected_color" format="color|reference"/>
+		<attr name="vpi_default_color" format="color|reference"/>
+		<attr name="vpi_radius" format="dimension|reference"/>
+		<attr name="vpi_length" format="dimension|reference"/>
+		<attr name="vpi_distance" format="dimension|reference"/>
+		<attr name="vpi_num" format="integer"/>
+		<attr name="vpi_indicatorType">
 			<enum name="LINE" value="0" />
 			<enum name="CIRCLE" value="1" />
 			<enum name="CIRCLE_LINE" value="2" />
 			<enum name="BEZIER" value="3" />
 			<enum name="SPRING" value="4" />
 		</attr>
-		<attr name="distanceType">
+		<attr name="vpi_distanceType">
 			<enum name="BY_RADIUS" value="0" />
 			<enum name="BY_DISTANCE" value="1" />
 			<enum name="BY_LAYOUT" value="2" />

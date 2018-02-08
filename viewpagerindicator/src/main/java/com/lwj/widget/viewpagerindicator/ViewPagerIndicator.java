@@ -501,14 +501,14 @@ public class ViewPagerIndicator extends View {
      */
     private void setStyleable(Context context, AttributeSet attrs) {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerIndicator);
-        mSelected_color = array.getColor(R.styleable.ViewPagerIndicator_selected_color, 0xffffffff);
-        mDefault_color = array.getColor(R.styleable.ViewPagerIndicator_default_color, 0xffcdcdcd);
-        mRadius = array.getDimension(R.styleable.ViewPagerIndicator_radius, 20);//px
-        mLength = array.getDimension(R.styleable.ViewPagerIndicator_length, 2 * mRadius);//px
-        mDistance = array.getDimension(R.styleable.ViewPagerIndicator_distance, 3 * mRadius);//px
-        mDistanceType = array.getInteger(R.styleable.ViewPagerIndicator_distanceType, DistanceType.BY_RADIUS);
-        mIndicatorType = array.getInteger(R.styleable.ViewPagerIndicator_indicatorType, IndicatorType.CIRCLE);
-        mNum = array.getInteger(R.styleable.ViewPagerIndicator_num, 0);
+        mSelected_color = array.getColor(R.styleable.ViewPagerIndicator_vpi_selected_color, 0xffffffff);
+        mDefault_color = array.getColor(R.styleable.ViewPagerIndicator_vpi_default_color, 0xffcdcdcd);
+        mRadius = array.getDimension(R.styleable.ViewPagerIndicator_vpi_radius, 20);//px
+        mLength = array.getDimension(R.styleable.ViewPagerIndicator_vpi_length, 2 * mRadius);//px
+        mDistance = array.getDimension(R.styleable.ViewPagerIndicator_vpi_distance, 3 * mRadius);//px
+        mDistanceType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_distanceType, DistanceType.BY_RADIUS);
+        mIndicatorType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_indicatorType, IndicatorType.CIRCLE);
+        mNum = array.getInteger(R.styleable.ViewPagerIndicator_vpi_num, 0);
         array.recycle();
         switch (mIndicatorType) {
             case IndicatorType.BEZIER:
