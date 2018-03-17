@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class NotCarouselActivity extends AppCompatActivity {
 
     private ViewPager mViewpager;
-    private ViewPagerAdapter2 adapter;
     private ViewPagerIndicator mIndicatorDefault;
     private ViewPagerIndicator mIndicatorCircle;
     private ViewPagerIndicator mIndicatorLine;

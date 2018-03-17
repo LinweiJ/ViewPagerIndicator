@@ -13,7 +13,7 @@ import com.lwj.widget.viewpagerindicator.ViewPagerIndicator;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class CarouseActivity extends AppCompatActivity {
 
     private ViewPager mViewpager;
     private ViewPagerIndicator mIndicatorDefault;

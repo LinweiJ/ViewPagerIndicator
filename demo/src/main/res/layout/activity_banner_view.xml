@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lwj.widget.viewpagerindicator_demo.BannerViewActivity">
+
+    <com.lwj.widget.bannerview.BannerView
+        android:id="@+id/BannerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="#cdcdcd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="提示" />
+
+        <com.lwj.widget.viewpagerindicator.ViewPagerIndicator
+            android:id="@+id/indicator_default"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#55efefef"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="50dp"
+            />
+        <com.lwj.widget.viewpagerindicator.ViewPagerIndicator
+            android:id="@+id/indicator_not_anim"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#55efefef"
+            android:layout_gravity="bottom"
+            app:vpi_animation="false"
+            app:vpi_indicatorType="CIRCLE_LINE"
+            app:vpi_radius="10dp"
+            app:vpi_selected_color="#FF239AF5"
+            android:layout_marginBottom="120dp"
+            />
+    </com.lwj.widget.bannerview.BannerView>
+
+</android.support.constraint.ConstraintLayout>

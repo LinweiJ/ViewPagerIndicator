@@ -20,6 +20,7 @@
 			<enum name="BY_DISTANCE" value="1" />
 			<enum name="BY_LAYOUT" value="2" />
 		</attr>
+		<attr name="vpi_animation" format="boolean"/>
 	</declare-styleable>
 
 </resources>

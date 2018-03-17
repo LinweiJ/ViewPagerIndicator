@@ -21,10 +21,10 @@ public class ViewPagerIndicator extends View {
     private Path mPath;
     private Paint paintFill;
     private Paint paintStroke;
-    int mNum;//个数
-    float mRadius;//半径
-    float mLength;//线长
-    float mHeight;//线宽
+    private int mNum;//个数
+    private float mRadius;//半径
+    private float mLength;//线长
+    private float mHeight;//线宽
     private float mOffset;//偏移量
     private int mSelected_color;//选中颜色
     private int mDefault_color;//默认颜色
@@ -38,6 +38,8 @@ public class ViewPagerIndicator extends View {
     private static final float M = 0.551915024494f;
     private float mPercent;
     private boolean mIsLeft;
+    private boolean mIsInfiniteCircle;//无限循环
+    private boolean mAnimation;
 
     public ViewPagerIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -509,6 +511,7 @@ public class ViewPagerIndicator extends View {
         mDistanceType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_distanceType, DistanceType.BY_RADIUS);
         mIndicatorType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_indicatorType, IndicatorType.CIRCLE);
         mNum = array.getInteger(R.styleable.ViewPagerIndicator_vpi_num, 0);
+        mAnimation = array.getBoolean(R.styleable.ViewPagerIndicator_vpi_animation, true);
         array.recycle();
         switch (mIndicatorType) {
             case IndicatorType.BEZIER:
@@ -642,13 +645,55 @@ public class ViewPagerIndicator extends View {
         int BY_LAYOUT = 2;
     }
 
+    /**
+     * 一般 不循环 固定
+     * @param viewPager 适配的viewpager
+     * @return
+     */
     public ViewPagerIndicator setViewPager(ViewPager viewPager) {
-        setViewPager(viewPager, viewPager.getAdapter().getCount());
+        setViewPager(viewPager, viewPager.getAdapter().getCount(),false);
         return this;
     }
 
+
+    /**
+     *
+     * @param viewpager 适配的viewpager
+     * @param CycleNumber 伪无限循环 真实个数
+     * @return
+     */
     public ViewPagerIndicator setViewPager(ViewPager viewpager, int CycleNumber) {
+
+        setViewPager(viewpager, CycleNumber,false);
+        return this;
+    }
+    /**
+     *
+     * @param viewPager 适配的viewpager
+     * @param isInfiniteCircle 真无限循环 配合BannerView 通常是true;false为一般 不循环 固定等价于{@link #setViewPager(ViewPager viewPager)}
+     *
+     * @return
+     */
+    public ViewPagerIndicator setViewPager(ViewPager viewPager, boolean isInfiniteCircle) {
+
+        if(isInfiniteCircle){
+            setViewPager(viewPager,viewPager.getAdapter().getCount()-2,isInfiniteCircle);
+        }else{
+            setViewPager(viewPager,viewPager.getAdapter().getCount(),isInfiniteCircle);
+        }
+        return this;
+    }
+
+    /**
+     *
+     * @param viewpager 适配的viewpager
+     * @param CycleNumber 真/伪无限循环都必须输入
+     * @param isInfiniteCircle 真无限循环 配合Banner
+     * @return
+     */
+    public ViewPagerIndicator setViewPager(ViewPager viewpager, int CycleNumber, boolean isInfiniteCircle) {
         mNum = CycleNumber;
+        mIsInfiniteCircle = isInfiniteCircle;
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             //记录上一次滑动的positionOffsetPixels值
@@ -656,7 +701,10 @@ public class ViewPagerIndicator extends View {
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                if(!mAnimation){
+                    //不需要动画
+                    return;
+                }
                 boolean isLeft = mIsLeft;
                 if (lastValue / 10 > positionOffsetPixels / 10) {
                     //右滑
@@ -665,15 +713,40 @@ public class ViewPagerIndicator extends View {
                     //左滑
                     isLeft = true;
                 }
-                if (mNum > 0) {
+                if (mNum > 0&&!mIsInfiniteCircle) {
                     move(positionOffset, position % mNum, isLeft);
+                }else if(mNum>0&&mIsInfiniteCircle){
+                    if(position==0){
+                        position=mNum-1;
+                    }else if(position==mNum+1){
+                        position=0;
+                    }else{
+                        position--;
+                    }
+                    move(positionOffset, position , isLeft);
                 }
                 lastValue = positionOffsetPixels;
             }
 
             @Override
             public void onPageSelected(int position) {
-
+                if(mAnimation){
+                    //需要动画
+                    return;
+                }
+                if(mNum>0&&!mIsInfiniteCircle)
+                {
+                    move(0, position % mNum, false);
+                }else if(mNum>0&&mIsInfiniteCircle){
+                    if(position==0){
+                        position=mNum-1;
+                    }else if(position==mNum+1){
+                        position=0;
+                    }else{
+                        position--;
+                    }
+                    move(0, position , false);
+                }
             }
 
             @Override
