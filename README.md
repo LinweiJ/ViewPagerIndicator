@@ -30,7 +30,7 @@ allprojects {
 
 ```
 dependencies {
-	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.0.2'
+	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.1.0'
 	}
 ```
 
@@ -70,10 +70,12 @@ Properties:
 
 ​       BY_RADIUS：3倍radius ; BY_DISTANCE ：定义固定距离 ;BY_LAYOUT ：根据layout_width均分得到距离
 
+- `app:vpi_animation`(默认为true:动画开启 ; false:关闭动画)
+
 2 .  java 
 
 ```java
-  mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.viewPagerIndicator);
+   mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.viewPagerIndicator);
    
    //viewpager是固定页数, 传入viewpager即可
    mViewPagerIndicator.setViewPager(mViewpager);
@@ -82,6 +84,14 @@ Properties:
    //需要传入实际展示个数num
    mViewPagerIndicator.setViewPager(mViewpager,num);
    
+   //真无限循环BannerView,配合BannerView,增加以下setViewPager
+   //https://github.com/LinweiJ/BannerView
+   // 两种情况 更多细节请看demo/BannerViewActivity
+   // if mBannerView.setCircle(true);无限循环
+   mIndicatorDefault.setViewPager(mBannerView.getViewPager(),true);
+   // if mBannerView.setCircle(false);固定 不循环
+   mIndicatorDefault.setViewPager(mBannerView.getViewPager(),false);
+
 ```
 
 3.更多

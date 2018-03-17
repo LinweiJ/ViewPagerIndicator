@@ -28,7 +28,7 @@ Add  the dependency  in your module build.gradle :
 
 ```
 dependencies {
-	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.0.2'
+	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.1.0'
 	}
 ```
 
@@ -64,6 +64,7 @@ Properties:
 - `app:num`
 - `app:indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER ;SPRING)
 - `app:distanceType` (BY_RADIUS  ; BY_DISTANCE ; BY_LAYOUT )
+- `app:vpi_animation`(default true)
 
 2.find **ViewPagerIndicator** through code, work with ViewPager
 
@@ -76,6 +77,14 @@ Properties:
    //if viewpager's carousel ,  ex: allNum=100000  realNum=6 
    //you must give  num = realNum ,ViewPagerIndicator need it to work 
    mViewPagerIndicator.setViewPager(mViewpager,num);
+   
+   //show ViewPagerIndicator in BannerView
+   //more detail see https://github.com/LinweiJ/BannerView
+   //see demo/BannerViewActivity
+   // if mBannerView.setCircle(true);
+   mIndicatorDefault.setViewPager(mBannerView.getViewPager(),true);
+   // if mBannerView.setCircle(false);
+   mIndicatorDefault.setViewPager(mBannerView.getViewPager(),false);
 ```
 
 3.more usage  
