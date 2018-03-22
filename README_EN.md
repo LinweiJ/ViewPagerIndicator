@@ -56,14 +56,14 @@ dependencies {
 
 Properties:
 
-- `app:selected_color`  
-- `app:default_color`   (if CIRCLE_LINE(indicatorType)  default_color is indicator color ,selected_color not work)
-- `app:radius`  (if CIRCLE_LINE(indicatorType)  radius is indicator height)
-- `app:length`   (work with CIRCLE_LINE(indicatorType))
-- `app:distance`    (work with BY_DISTANCE (distanceType))
-- `app:num`
-- `app:indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER ;SPRING)
-- `app:distanceType` (BY_RADIUS  ; BY_DISTANCE ; BY_LAYOUT )
+- `app:vpi_selected_color`  
+- `app:vpi_default_color`   (if CIRCLE_LINE(indicatorType)  default_color is indicator color ,selected_color not work)
+- `app:vpi_radius`  (if CIRCLE_LINE(indicatorType)  radius is indicator height)
+- `app:vpi_length`   (work with CIRCLE_LINE(indicatorType))
+- `app:vpi_distance`    (work with BY_DISTANCE (distanceType))
+- `app:vpi_num`
+- `app:vpi_indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER ;SPRING)
+- `app:vpi_distanceType` (BY_RADIUS  ; BY_DISTANCE ; BY_LAYOUT )
 - `app:vpi_animation`(default true)
 
 2.find **ViewPagerIndicator** through code, work with ViewPager
