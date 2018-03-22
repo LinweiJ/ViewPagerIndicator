@@ -56,17 +56,17 @@ dependencies {
 
 Properties:
 
-- `app:selected_color`  
-- `app:default_color`   (如果 indicatorType=CIRCLE_LINE  default_color 为指示器唯一颜色 ,selected_color 不起作用)
-- `app:radius`  (点的大小,在indicatorType= CIRCLE_LINE 的情况下 radius 是点的高)
-- `app:length`   (只作用在 indicatorType=CIRCLE_LINE 的情况下,为 指示器点的长度)
-- `app:distance`    (只作用在 distanceType=BY_DISTANCE 的情况下)
-- `app:num`
-- `app:indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER;SPRING)
+- `app:vpi_selected_color`  
+- `app:vpi_default_color`   (如果 indicatorType=CIRCLE_LINE  default_color 为指示器唯一颜色 ,selected_color 不起作用)
+- `app:vpi_radius`  (点的大小,在indicatorType= CIRCLE_LINE 的情况下 radius 是点的高)
+- `app:vpi_length`   (只作用在 indicatorType=CIRCLE_LINE 的情况下,为 指示器点的长度)
+- `app:vpi_distance`    (只作用在 distanceType=BY_DISTANCE 的情况下)
+- `app:vpi_num`
+- `app:vpi_indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER;SPRING)
 
 ​        LINE：线 ; CIRCLE：圆点(默认) ; CIRCLE_LINE：圆角矩形;  BEZIER：弹性球 ; SPRING： 弹簧粘性球
 
-- `app:distanceType` (BY_RADIUS; BY_DISTANCE ; BY_LAYOUT )
+- `app:vpi_distanceType` (BY_RADIUS; BY_DISTANCE ; BY_LAYOUT )
 
 ​       BY_RADIUS：3倍radius ; BY_DISTANCE ：定义固定距离 ;BY_LAYOUT ：根据layout_width均分得到距离
 
