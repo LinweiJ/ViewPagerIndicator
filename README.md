@@ -44,13 +44,13 @@ dependencies {
 				android:layout_width="match_parent"
 				android:layout_height="50dp"
 				android:background="#efefef"
-				app:default_color="#cdcdcd"
-				app:distance="800dp"
-				app:distanceType="BY_LAYOUT"
-				app:indicatorType="LINE"
-				app:length="24dp"
-				app:radius="8dp"
-				app:selected_color="#FF23EEF5"
+				app:vpi_default_color="#cdcdcd"
+				app:vpi_distance="800dp"
+				app:vpi_distanceType="BY_LAYOUT"
+				app:vpi_indicatorType="LINE"
+				app:vpi_length="24dp"
+				app:vpi_radius="8dp"
+				app:vpi_selected_color="#FF23EEF5"
 			/>
 ```
 
@@ -75,7 +75,7 @@ Properties:
 2 .  java 
 
 ```java
-   mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.viewPagerIndicator);
+   mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.indicator_line);
    
    //viewpager是固定页数, 传入viewpager即可
    mViewPagerIndicator.setViewPager(mViewpager);
