@@ -4,7 +4,7 @@
 
 [![](https://jitpack.io/v/LinweiJ/ViewPagerIndicator.svg)](https://jitpack.io/#LinweiJ/ViewPagerIndicator)
 
-![ViewPagerIndicator.gif](https://github.com/LinweiJ/ViewPagerIndicator/blob/master/screen_shot/ViewPagerIndicator.gif)
+![ViewPagerIndicator.gif](https://github.com/LinweiJ/ViewPagerIndicator/blob/master/screen_shot/ViewPagerIndicator_0.2.0.gif)
 
 ## Document
 
@@ -28,7 +28,7 @@ Add  the dependency  in your module build.gradle :
 
 ```
 dependencies {
-	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.1.0'
+	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.2.0'
 	}
 ```
 
@@ -59,10 +59,11 @@ Properties:
 - `app:vpi_selected_color`  
 - `app:vpi_default_color`   (if CIRCLE_LINE(indicatorType)  default_color is indicator color ,selected_color not work)
 - `app:vpi_radius`  (if CIRCLE_LINE(indicatorType)  radius is indicator height)
+- `app:vpi_radius_selected`  (work with CIRCLE(indicatorType),default is same as radius)
 - `app:vpi_length`   (work with CIRCLE_LINE(indicatorType))
 - `app:vpi_distance`    (work with BY_DISTANCE (distanceType))
 - `app:vpi_num`
-- `app:vpi_indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER ;SPRING)
+- `app:vpi_indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER ;SPRING; PROGRESS)
 - `app:vpi_distanceType` (BY_RADIUS  ; BY_DISTANCE ; BY_LAYOUT )
 - `app:vpi_animation`(default true)
 

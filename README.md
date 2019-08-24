@@ -4,7 +4,7 @@
 
 [![](https://jitpack.io/v/LinweiJ/ViewPagerIndicator.svg)](https://jitpack.io/#LinweiJ/ViewPagerIndicator)
 
-![ViewPagerIndicator.gif](https://github.com/LinweiJ/ViewPagerIndicator/blob/master/screen_shot/ViewPagerIndicator.gif)
+![ViewPagerIndicator.gif](https://github.com/LinweiJ/ViewPagerIndicator/blob/master/screen_shot/ViewPagerIndicator_0.2.0.gif)
 
 ## 文档
 
@@ -30,7 +30,7 @@ allprojects {
 
 ```
 dependencies {
-	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.1.0'
+	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.2.0'
 	}
 ```
 
@@ -59,12 +59,13 @@ Properties:
 - `app:vpi_selected_color`  
 - `app:vpi_default_color`   (如果 indicatorType=CIRCLE_LINE  default_color 为指示器唯一颜色 ,selected_color 不起作用)
 - `app:vpi_radius`  (点的大小,在indicatorType= CIRCLE_LINE 的情况下 radius 是点的高)
+- `app:vpi_radius_selected`  (只作用在indicatorType= CIRCLE 的情况下,为选中点的大小,默认为radius大小)
 - `app:vpi_length`   (只作用在 indicatorType=CIRCLE_LINE 的情况下,为 指示器点的长度)
 - `app:vpi_distance`    (只作用在 distanceType=BY_DISTANCE 的情况下)
 - `app:vpi_num`
 - `app:vpi_indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER;SPRING)
 
-​        LINE：线 ; CIRCLE：圆点(默认) ; CIRCLE_LINE：圆角矩形;  BEZIER：弹性球 ; SPRING： 弹簧粘性球
+​        LINE：线 ; CIRCLE：圆点(默认) ; CIRCLE_LINE：圆角矩形;  BEZIER：弹性球 ; SPRING： 弹簧粘性球; PROGRESS： 进度条
 
 - `app:vpi_distanceType` (BY_RADIUS; BY_DISTANCE ; BY_LAYOUT )
 
