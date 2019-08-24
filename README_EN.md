@@ -44,32 +44,32 @@ dependencies {
 				android:layout_width="match_parent"
 				android:layout_height="50dp"
 				android:background="#efefef"
-				app:default_color="#cdcdcd"
-				app:distance="800dp"
-				app:distanceType="BY_LAYOUT"
-				app:indicatorType="LINE"
-				app:length="24dp"
-				app:radius="8dp"
-				app:selected_color="#FF23EEF5"
+				app:vpi_default_color="#cdcdcd"
+				app:vpi_distance="800dp"
+				app:vpi_distanceType="BY_LAYOUT"
+				app:vpi_indicatorType="LINE"
+				app:vpi_length="24dp"
+				app:vpi_radius="8dp"
+				app:vpi_selected_color="#FF23EEF5"
 			/>
 ```
 
 Properties:
 
-- `app:selected_color`  
-- `app:default_color`   (if CIRCLE_LINE(indicatorType)  default_color is indicator color ,selected_color not work)
-- `app:radius`  (if CIRCLE_LINE(indicatorType)  radius is indicator height)
-- `app:length`   (work with CIRCLE_LINE(indicatorType))
-- `app:distance`    (work with BY_DISTANCE (distanceType))
-- `app:num`
-- `app:indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER ;SPRING)
-- `app:distanceType` (BY_RADIUS  ; BY_DISTANCE ; BY_LAYOUT )
+- `app:vpi_selected_color`  
+- `app:vpi_default_color`   (if CIRCLE_LINE(indicatorType)  default_color is indicator color ,selected_color not work)
+- `app:vpi_radius`  (if CIRCLE_LINE(indicatorType)  radius is indicator height)
+- `app:vpi_length`   (work with CIRCLE_LINE(indicatorType))
+- `app:vpi_distance`    (work with BY_DISTANCE (distanceType))
+- `app:vpi_num`
+- `app:vpi_indicatorType` (LINE;  CIRCLE; CIRCLE_LINE; BEZIER ;SPRING)
+- `app:vpi_distanceType` (BY_RADIUS  ; BY_DISTANCE ; BY_LAYOUT )
 - `app:vpi_animation`(default true)
 
 2.find **ViewPagerIndicator** through code, work with ViewPager
 
 ```java
-   mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.viewPagerIndicator);
+   mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.indicator_line);
    
    //if viewpager's pages  is limited , exact, fixed , not carousel
    mViewPagerIndicator.setViewPager(mViewpager);
