@@ -22,6 +22,7 @@ public class CarouseActivity extends AppCompatActivity {
     private ViewPagerIndicator mIndicatorCircleLine;
     private ViewPagerIndicator mIndicatorBazier;
     private ViewPagerIndicator mIndicatorSpring;
+    private ViewPagerIndicator mIndicatorProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class CarouseActivity extends AppCompatActivity {
         mIndicatorCircleLine = (ViewPagerIndicator) findViewById(R.id.indicator_circle_line);
         mIndicatorBazier = (ViewPagerIndicator) findViewById(R.id.indicator_bezier);
         mIndicatorSpring = (ViewPagerIndicator) findViewById(R.id.indicator_spring);
+        mIndicatorProgress = (ViewPagerIndicator) findViewById(R.id.indicator_progress);
 
         mIndicatorDefault.setViewPager(mViewpager,num);
         mIndicatorCircle.setViewPager(mViewpager,num);
@@ -75,6 +77,7 @@ public class CarouseActivity extends AppCompatActivity {
         mIndicatorCircleLine.setViewPager(mViewpager,num);
         mIndicatorBazier.setViewPager(mViewpager,num);
         mIndicatorSpring.setViewPager(mViewpager,num);
+        mIndicatorProgress.setViewPager(mViewpager,num);
 
     }
 

@@ -45,7 +45,7 @@ public class BannerViewActivity extends AppCompatActivity {
         mBannerView = (BannerView) findViewById(R.id.BannerView);
         mBannerView.setFragmentManager(getSupportFragmentManager());
         mBannerView.setPictureUrl(mUrlList);
-        mBannerView.setCircle(false);
+        mBannerView.setCircle(true);
         mBannerView.setDurationFavor(4.0f);
         mBannerView.setInitItem(0);
         mBannerView.setInterpolatorType(BannerInterpolator.ACCELERATE_DECELERATE);
@@ -79,8 +79,8 @@ public class BannerViewActivity extends AppCompatActivity {
         mIndicatorDefault.setViewPager(mBannerView.getViewPager(),true);
         mIndicatorNotAnim.setViewPager(mBannerView.getViewPager(),true);
         // if mBannerView.setCircle(false);
-        mIndicatorDefault.setViewPager(mBannerView.getViewPager(),false);
-        mIndicatorNotAnim.setViewPager(mBannerView.getViewPager(),false);
+//        mIndicatorDefault.setViewPager(mBannerView.getViewPager(),false);
+//        mIndicatorNotAnim.setViewPager(mBannerView.getViewPager(),false);
 
 
     }

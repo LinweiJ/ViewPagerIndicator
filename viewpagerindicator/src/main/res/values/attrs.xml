@@ -5,6 +5,7 @@
 		<attr name="vpi_selected_color" format="color|reference"/>
 		<attr name="vpi_default_color" format="color|reference"/>
 		<attr name="vpi_radius" format="dimension|reference"/>
+		<attr name="vpi_radius_selected" format="dimension|reference"/>
 		<attr name="vpi_length" format="dimension|reference"/>
 		<attr name="vpi_distance" format="dimension|reference"/>
 		<attr name="vpi_num" format="integer"/>
@@ -14,6 +15,7 @@
 			<enum name="CIRCLE_LINE" value="2" />
 			<enum name="BEZIER" value="3" />
 			<enum name="SPRING" value="4" />
+			<enum name="PROGRESS" value="5" />
 		</attr>
 		<attr name="vpi_distanceType">
 			<enum name="BY_RADIUS" value="0" />

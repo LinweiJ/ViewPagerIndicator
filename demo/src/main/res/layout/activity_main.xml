@@ -49,6 +49,8 @@
                 app:vpi_distanceType="BY_DISTANCE"
                 app:vpi_indicatorType="CIRCLE"
                 app:vpi_radius="10dp"
+                app:vpi_radius_selected="15dp"
+                app:vpi_animation="false"
                 app:vpi_selected_color="#F5A523"
                 />
             <TextView
@@ -115,6 +117,22 @@
                 app:vpi_indicatorType="SPRING"
                 app:vpi_radius="15dp"
                 app:vpi_selected_color="#FF23F57E"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="进度条(process)"/>
+            <com.lwj.widget.viewpagerindicator.ViewPagerIndicator
+                android:id="@+id/indicator_progress"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#efefef"
+                app:vpi_default_color="#cdcdcd"
+                app:vpi_distance="80dp"
+                app:vpi_distanceType="BY_DISTANCE"
+                app:vpi_indicatorType="PROGRESS"
+                app:vpi_radius="15dp"
+                app:vpi_selected_color="#FF23557E"
                 />
         </LinearLayout>
 

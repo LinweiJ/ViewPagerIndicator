@@ -21,6 +21,7 @@ public class NotCarouselActivity extends AppCompatActivity {
     private ViewPagerIndicator mIndicatorCircleLine;
     private ViewPagerIndicator mIndicatorBazier;
     private ViewPagerIndicator mIndicatorSpring;
+    private ViewPagerIndicator mIndicatorProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class NotCarouselActivity extends AppCompatActivity {
         mIndicatorCircleLine = (ViewPagerIndicator) findViewById(R.id.indicator_circle_line);
         mIndicatorBazier = (ViewPagerIndicator) findViewById(R.id.indicator_bezier);
         mIndicatorSpring = (ViewPagerIndicator) findViewById(R.id.indicator_spring);
+        mIndicatorProgress = (ViewPagerIndicator) findViewById(R.id.indicator_progress);
 
         mIndicatorDefault.setViewPager(mViewpager);
         mIndicatorCircle.setViewPager(mViewpager);
@@ -61,6 +63,7 @@ public class NotCarouselActivity extends AppCompatActivity {
         mIndicatorCircleLine.setViewPager(mViewpager);
         mIndicatorBazier.setViewPager(mViewpager);
         mIndicatorSpring.setViewPager(mViewpager);
+        mIndicatorProgress.setViewPager(mViewpager);
     }
 
 

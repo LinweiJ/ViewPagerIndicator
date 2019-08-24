@@ -23,6 +23,7 @@ public class ViewPagerIndicator extends View {
     private Paint paintStroke;
     private int mNum;//个数
     private float mRadius;//半径
+    private float mRadiusSelected;//选中半径，默认为mRadius
     private float mLength;//线长
     private float mHeight;//线宽
     private float mOffset;//偏移量
@@ -44,15 +45,47 @@ public class ViewPagerIndicator extends View {
     public ViewPagerIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         setStyleable(context, attrs);
-        paintStroke = new Paint();
-        paintFill = new Paint();
-        mPath = new Path();
+        initPaint();
+    }
+
+    /**
+     * xml 参数设置  选中颜色 默认颜色  点大小 长度 距离 距离类型 类型 真实个数(轮播)
+     *
+     * @param context
+     * @param attrs
+     */
+    private void setStyleable(Context context, AttributeSet attrs) {
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerIndicator);
+        mSelected_color = array.getColor(R.styleable.ViewPagerIndicator_vpi_selected_color, 0xffffffff);
+        mDefault_color = array.getColor(R.styleable.ViewPagerIndicator_vpi_default_color, 0xffcdcdcd);
+        mRadius = array.getDimension(R.styleable.ViewPagerIndicator_vpi_radius, 20);//px
+        mRadiusSelected = array.getDimension(R.styleable.ViewPagerIndicator_vpi_radius_selected, mRadius);//px
+        mLength = array.getDimension(R.styleable.ViewPagerIndicator_vpi_length, 2 * mRadius);//px
+        mDistance = array.getDimension(R.styleable.ViewPagerIndicator_vpi_distance, 3 * mRadius);//px
+        mDistanceType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_distanceType, DistanceType.BY_RADIUS);
+        mIndicatorType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_indicatorType, IndicatorType.CIRCLE);
+        mNum = array.getInteger(R.styleable.ViewPagerIndicator_vpi_num, 0);
+        mAnimation = array.getBoolean(R.styleable.ViewPagerIndicator_vpi_animation, true);
+        array.recycle();
+        switch (mIndicatorType) {
+            case IndicatorType.BEZIER:
+                mControlPoint = new Point[]{new Point(), new Point(), new Point(), new Point(), new Point(), new Point(),
+                        new Point(), new Point(), new Point(), new Point(), new Point(), new Point()};
+                break;
+            case IndicatorType.SPRING:
+                mSpringPoint = new Point[]{new Point(), new Point(), new Point(), new Point(), new Point(), new Point()};
+                break;
+        }
+        invalidate();
     }
 
     /**
      * 初始化画笔
      */
     private void initPaint() {
+        paintStroke = new Paint();
+        paintFill = new Paint();
+        mPath = new Path();
         //实心
         paintFill.setStyle(Paint.Style.FILL_AND_STROKE);
         paintFill.setColor(mSelected_color);
@@ -103,7 +136,7 @@ public class ViewPagerIndicator extends View {
                     canvas.drawCircle(-(mNum - 1) * 0.5f * mDistance + i * mDistance, 0, mRadius, paintStroke);
                 }
                 //选中
-                canvas.drawCircle(-(mNum - 1) * 0.5f * mDistance + mOffset, 0, mRadius, paintFill);
+                canvas.drawCircle(-(mNum - 1) * 0.5f * mDistance + mOffset, 0, mRadiusSelected, paintFill);
                 break;
             case IndicatorType.LINE://线
                 paintStroke.setStrokeWidth(mRadius);
@@ -180,6 +213,18 @@ public class ViewPagerIndicator extends View {
                     canvas.drawCircle(-(mNum - 1) * 0.5f * mDistance + i * mDistance, 0, mRadius, paintStroke);
                 }
                 drawSpringBezier(canvas);
+                break;
+            case IndicatorType.PROGRESS://进度条
+                for (int i = 0; i < mNum; i++) {//默认点 -(mNum - 1) * 0.5f * mDistance 第一个点
+                    canvas.drawCircle(-(mNum - 1) * 0.5f * mDistance + i * mDistance, 0, mRadius, paintStroke);
+                }
+                //选中
+                float rightOpen = -(mNum - 1) * 0.5f * mDistance + mOffset + mRadius;
+                float leftOpen = -(mNum - 1) * 0.5f * mDistance -   mRadius;
+                float topOpen = -mRadius;
+                float bottomOpen = mRadius;
+                RectF rectOpen = new RectF(leftOpen, topOpen, rightOpen, bottomOpen);// 设置个新的长方形
+                canvas.drawRoundRect(rectOpen, mRadius, mRadius, paintFill);
                 break;
         }
     }
@@ -496,36 +541,6 @@ public class ViewPagerIndicator extends View {
     }
 
     /**
-     * xml 参数设置  选中颜色 默认颜色  点大小 长度 距离 距离类型 类型 真实个数(轮播)
-     *
-     * @param context
-     * @param attrs
-     */
-    private void setStyleable(Context context, AttributeSet attrs) {
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerIndicator);
-        mSelected_color = array.getColor(R.styleable.ViewPagerIndicator_vpi_selected_color, 0xffffffff);
-        mDefault_color = array.getColor(R.styleable.ViewPagerIndicator_vpi_default_color, 0xffcdcdcd);
-        mRadius = array.getDimension(R.styleable.ViewPagerIndicator_vpi_radius, 20);//px
-        mLength = array.getDimension(R.styleable.ViewPagerIndicator_vpi_length, 2 * mRadius);//px
-        mDistance = array.getDimension(R.styleable.ViewPagerIndicator_vpi_distance, 3 * mRadius);//px
-        mDistanceType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_distanceType, DistanceType.BY_RADIUS);
-        mIndicatorType = array.getInteger(R.styleable.ViewPagerIndicator_vpi_indicatorType, IndicatorType.CIRCLE);
-        mNum = array.getInteger(R.styleable.ViewPagerIndicator_vpi_num, 0);
-        mAnimation = array.getBoolean(R.styleable.ViewPagerIndicator_vpi_animation, true);
-        array.recycle();
-        switch (mIndicatorType) {
-            case IndicatorType.BEZIER:
-                mControlPoint = new Point[]{new Point(), new Point(), new Point(), new Point(), new Point(), new Point(),
-                        new Point(), new Point(), new Point(), new Point(), new Point(), new Point()};
-                break;
-            case IndicatorType.SPRING:
-                mSpringPoint = new Point[]{new Point(), new Point(), new Point(), new Point(), new Point(), new Point()};
-                break;
-        }
-        invalidate();
-    }
-
-    /**
      * 移动指示点
      *
      * @param percent  比例
@@ -549,6 +564,7 @@ public class ViewPagerIndicator extends View {
                 break;
             case IndicatorType.CIRCLE://圆
             case IndicatorType.LINE://线
+            case IndicatorType.PROGRESS://进度条
                 if (mPosition == mNum - 1 && !isLeft) {//第一个 右滑
                     mOffset = (1 - percent) * (mNum - 1) * mDistance;
                 } else if (mPosition == mNum - 1 && isLeft) {//最后一个 左滑
@@ -592,7 +608,7 @@ public class ViewPagerIndicator extends View {
 
 
     /**
-     * 线,圆
+     * 线,圆,圆线,贝塞尔,弹性球,进度条
      */
     public interface IndicatorType {
         int LINE = 0;
@@ -600,6 +616,7 @@ public class ViewPagerIndicator extends View {
         int CIRCLE_LINE = 2;
         int BEZIER = 3;
         int SPRING = 4;
+        int PROGRESS = 5;
     }
 
 
