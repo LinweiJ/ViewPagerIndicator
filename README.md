@@ -35,7 +35,7 @@ dependencies {
 	        implementation 'com.github.LinweiJ:ViewPagerIndicator:0.3.0'
 	}
 ```
-#### support for support:
+#### support for support:（使用android studio的Refactor->Migrate to AndroidX,也可以支持AndroidX）
 
 ```
 dependencies {
