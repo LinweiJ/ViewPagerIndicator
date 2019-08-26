@@ -28,9 +28,18 @@ allprojects {
 
 ### 然后在module的build.gradle 添加:
 
+#### support for androidx:
+
 ```
 dependencies {
-	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.2.0'
+	        implementation 'com.github.LinweiJ:ViewPagerIndicator:0.3.0'
+	}
+```
+#### support for support:
+
+```
+dependencies {
+	        implementation 'com.github.LinweiJ:ViewPagerIndicator:0.2.0'
 	}
 ```
 

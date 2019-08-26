@@ -26,12 +26,20 @@ allprojects {
 
 Add  the dependency  in your module build.gradle :
 
+support for androidx:
+
 ```
 dependencies {
-	        compile 'com.github.LinweiJ:ViewPagerIndicator:0.2.0'
+	        implementation 'com.github.LinweiJ:ViewPagerIndicator:0.3.0'
 	}
 ```
+support for support:
 
+```
+dependencies {
+	        implementation 'com.github.LinweiJ:ViewPagerIndicator:0.2.0'
+	}
+```
 
 
 ## Usage
